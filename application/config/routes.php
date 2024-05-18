@@ -69,3 +69,7 @@ $route['questions/(:any)'] = 'api/questioncontroller/questions/$1';
 # answer endpoints
 $route['answers'] = 'api/answercontroller/answers';
 $route['answers/(:any)'] = 'api/answercontroller/answers/$1';
+
+# tag endpoints
+$route['tags'] = 'api/tagcontroller/tags';
+$route['tags/(:any)'] = 'api/tagcontroller/tags/$1';
