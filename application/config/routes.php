@@ -59,3 +59,5 @@ $route['login'] = 'api/authcontroller/login';
 $route['logout'] = 'api/authcontroller/logout';
 $route['verify'] = 'api/authcontroller/verify';
 
+# user endpoints
+$route['users'] = 'api/usercontroller/users';
