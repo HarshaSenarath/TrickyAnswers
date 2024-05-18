@@ -50,14 +50,14 @@ class AuthController extends RestController {
                     'status' => 'error',
                     'message' => $result['message']
                 ];
-                $this->response($response, $result['code']);
+                $this->response($response, 500);
             }
 
             $response = [
                 'status' => 'success',
                 'message' => $result['message']
             ];
-            $this->response($response, $result['code']);
+            $this->response($response, 201);
         } catch (Exception $e) {
             log_message('error', 'Server error: ' . $e->getMessage());
 
@@ -94,19 +94,25 @@ class AuthController extends RestController {
             $result = $this->usermodel->authenticateUser($email, $password);
 
             if (!$result['status']) {
+                $statusCode = 500;
+                if ($result['message'] === 'User not found') {
+                    $statusCode = 404;
+                } elseif ($result['message'] === 'Invalid email or password') {
+                    $statusCode = 401;
+                }
+
                 $response = [
                     'status' => 'error',
                     'message' => $result['message']
                 ];
-                $this->response($response, $result['code']);
-                
+                $this->response($response, $statusCode);
             }
 
             $response = [
                 'status' => 'success',
                 'message' => $result['message']
             ];
-            $this->response($response, $result['code']);
+            $this->response($response, 200);
         } catch (Exception $e) {
             log_message('error', 'Server error: ' . $e->getMessage());
 
@@ -137,7 +143,7 @@ class AuthController extends RestController {
                 'status' => 'success',
                 'message' => $result['message']
             ];
-            $this->response($response, $result['code']);   
+            $this->response($response, 200);   
         } catch (Exception $e) {
             log_message('error', 'Server error: ' . $e->getMessage());
 
@@ -154,19 +160,19 @@ class AuthController extends RestController {
         try {
             $result = $this->authmodel->isAuthenticated();
 
-            if ($result['status']) {
+            if (!$result['status']) {
                 $response = [
-                    'status' => 'success',
+                    'status' => 'error',
                     'message' => $result['message']
                 ];
-                $this->response($response, $result['code']);             
+                $this->response($response, 401);             
             }
-                
+
             $response = [
-                'status' => 'error',
+                'status' => 'success',
                 'message' => $result['message']
             ];
-            $this->response($response, $result['code']);
+            $this->response($response, 200);
         } catch (Exception $e) {
             log_message('error', 'Server error: ' . $e->getMessage());
 

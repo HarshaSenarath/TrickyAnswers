@@ -61,3 +61,7 @@ $route['verify'] = 'api/authcontroller/verify';
 
 # user endpoints
 $route['users'] = 'api/usercontroller/users';
+
+# question endpoints
+$route['questions'] = 'api/questioncontroller/questions';
+$route['questions/(:any)'] = 'api/questioncontroller/questions/$1';

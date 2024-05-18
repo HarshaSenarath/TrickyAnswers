@@ -12,8 +12,7 @@ class AuthModel extends CI_Model {
         $this->session->sess_destroy();
 
         return [
-            'message' => 'Logged out successfully',
-            'code' => 200
+            'message' => 'Logged out successfully'
         ];
     }
 
@@ -22,15 +21,13 @@ class AuthModel extends CI_Model {
         if (isset($this->session->authenticated) && $this->session->authenticated == true) {
             return [
                 'status' => true,
-                'message' => 'User is logged in',
-                'code' => 200
+                'message' => 'User is logged in'
             ];
         }
             
         return [
             'status' => false,
-            'message' => 'User is not logged in',
-            'code' => 401
+            'message' => 'User is not logged in'
         ]; 
     }
 
@@ -48,8 +45,7 @@ class AuthModel extends CI_Model {
             
             return [
                 'status' => false,
-                'message' => 'An error occurred when verifying old password',
-                'code' => 500
+                'message' => 'An error occurred when verifying old password'
             ];
         }
 
@@ -62,8 +58,7 @@ class AuthModel extends CI_Model {
         } else {
             return [
                 'status' => false,
-                'message' => 'Incorrect old password',
-                'code' => 401
+                'message' => 'Incorrect old password'
             ];
         }
     }
