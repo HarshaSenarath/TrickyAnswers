@@ -23,8 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8888/6cosc022w/cirest/';
-// $config['base_url'] = 'https://courtes.users.ecs.westminster.ac.uk/ciapp/';
+$config['base_url'] = 'http://localhost:8080/';
 
 /*
 |--------------------------------------------------------------------------
@@ -238,7 +237,7 @@ $config['log_threshold'] = 2;
 |
 */
 // $config['log_path'] = '/Applications/MAMP/htdocs/6cosc005w/ciapp/application/logs/';
-$config['log_path'] = '/Applications/MAMP/htdocs/6cosc022w/cirest/application/logs/';
+$config['log_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -385,11 +384,11 @@ $config['encryption_key'] = '';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_samesite'] = 'Lax';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
